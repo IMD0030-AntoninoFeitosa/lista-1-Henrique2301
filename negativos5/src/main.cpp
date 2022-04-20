@@ -2,11 +2,17 @@
 using std::cin;
 using std::cout;
 
-const int SIZE = 5; // input size.
+const int SIZE = 5;
 
 int main(void)
 {
-    // TODO: Adicione aqui seu código.
-
-    return 0;
+  int value, count = 0;
+  for(int i=0;i<SIZE;i++){
+    cin >> std::ws >> value;
+    if(value < 0){
+      count++;
+    }
+  }
+  cout << count;
+  return 0;
 }
