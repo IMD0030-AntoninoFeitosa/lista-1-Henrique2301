@@ -1,57 +1,43 @@
-#include <iostream>   // cout, endl
-#include <cassert>    // assert()
-#include <random>     // random_device, mt19937
-#include <iterator>   // std::begin(), std::end()
-#include <vector>
-#include <array>
+#include <iostream>
+using std::cout;
+using std::cin;
+using std::endl;
+#include <iomanip>
+using std::setprecision;
 
-#include "test_manager.h"
-#include "function.h"
+// Se desejar, crie funções aqui, antes do main().
 
-int main ( void )
+int main(void)
 {
-    TestManager tm{ "Test Set" };
-    {
-        BEGIN_TEST(tm, "Vetor vazio", "[reverse]");
-        std::array<string,0> A;
+  // TODO: Adicione aqui a sua solução.
 
-        reverse( A );
-        EXPECT_TRUE( A.size() == 0 );
+  int x;
+  int count = 0;
+  int in1 = 0;
+  int in2 = 0;
+  int in3 = 0;
+  int in4 = 0;
+  int in5 = 0;
+  while( cin >> std::ws >> x) {
+    count++;
+    if(x >= 0 && x < 25){
+      in1++;
+    } else if(x >= 25 && x < 50){
+      in2++;
+    } else if(x >= 50 && x < 75){
+      in3++;
+    } else if(x >= 75 && x < 100){
+      in4++;
+    } else {
+      in5++;
     }
+  }
+  
+  cout << setprecision(4) << (in1*100.0)/static_cast<double>(count) << endl;
+  cout << setprecision(4) << (in2*100.0)/count << endl;
+  cout << setprecision(4) << (in3*100.0)/count << endl;
+  cout << setprecision(4) << (in4*100.0)/count << endl;
+  cout << setprecision(4) << (in5*100.0)/count << endl;
 
-    {
-
-        BEGIN_TEST(tm,"Inverte vetor tamanho ímpar", "[reverse]");
-        std::array<string,7> A{"7", "6", "5", "4", "3", "2", "1"};
-        std::array<string,7> B{"1", "2", "3", "4", "5", "6", "7"};
-
-        reverse( A );
-        EXPECT_TRUE( A == B );
-
-    }
-
-    {
-
-        BEGIN_TEST( tm,"Inverte vetor tamanho par", "[reverse]");
-        std::array<string,6> A{"6", "5", "4", "3", "2", "1"};
-        std::array<string,6> B{"1", "2", "3", "4", "5", "6"};
-
-        reverse( A );
-        EXPECT_TRUE( A == B );
-    }
-
-    {
-        BEGIN_TEST( tm,"Vetor com 1 elemento", "[reverse]");
-        std::array<string,1> A{"3"};
-        std::array<string,1> B{"3"};
-
-        reverse( A );
-        EXPECT_TRUE( A == B );
-    }
-
-    tm.summary();
-    std::cout << std::endl;
-    //== Reverse
-    return EXIT_SUCCESS;
-
+  return 0;
 }
